@@ -1,7 +1,6 @@
-import React, { useContext, useReducer, useMemo } from 'react'
+import React, { useContext, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import { Router, globalHistory, navigate } from '@reach/router'
-import { Global } from '@emotion/core'
 import { Swipeable } from 'react-swipeable'
 import merge from 'lodash.merge'
 
@@ -55,7 +54,6 @@ const getWrapper = mode => {
       return Grid
     default:
       return BaseWrapper
-      break
   }
 }
 

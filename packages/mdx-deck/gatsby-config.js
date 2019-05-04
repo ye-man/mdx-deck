@@ -1,7 +1,6 @@
 const src = process.env.__SRC__
 const dirname = process.env.__DIRNAME__
 
-const path = require('path')
 const chalk = require('chalk')
 const remarkPlugins = [require('remark-unwrap-images'), require('remark-emoji')]
 const pkg = require('./package.json')
@@ -19,17 +18,12 @@ if (themes.length) {
   console.log(chalk.green('[mdx-deck]', 'loading themes:'), themes.join(' '))
 }
 
-const relative = path.relative(dirname, src) || '.'
-const filepath = path.join(dirname, src)
-console.log({ src, dirname })
-console.log('relative', relative)
-
 module.exports = {
   __experimentalThemes: [
     {
       resolve: '@mdx-deck/gatsby-theme',
       options: {
-        path: relative,
+        path: src,
         name: '/',
       },
     },
@@ -42,7 +36,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: filepath,
+        path: src,
       },
     },
     {

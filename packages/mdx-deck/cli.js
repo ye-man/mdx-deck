@@ -92,7 +92,7 @@ const run = (...args) =>
   })
 
 const start = async () => {
-  await run('clean')
+  if (opts.clean) await run('clean')
 
   switch (cmd) {
     case 'build':
