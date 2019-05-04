@@ -30,7 +30,7 @@ export const Grid = props => {
           flexWrap: 'wrap',
         }}
       >
-        {slides.map((Component, i) => (
+        {slides.map((slide, i) => (
           <div
             ref={i === index ? activeThumb : null}
             key={i}
@@ -52,9 +52,7 @@ export const Grid = props => {
             }}
           >
             <Zoom zoom={1 / 4}>
-              <Slide>
-                <Component />
-              </Slide>
+              <Slide>{slide}</Slide>
             </Zoom>
           </div>
         ))}

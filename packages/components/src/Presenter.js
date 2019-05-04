@@ -7,7 +7,7 @@ import Clock from './Clock'
 
 export const Presenter = props => {
   const { slides, metadata, index } = props
-  const Next = slides[index + 1]
+  const next = slides[index + 1]
   const { notes } = metadata[index] || {}
 
   return (
@@ -45,13 +45,7 @@ export const Presenter = props => {
             marginRight: 'auto',
           }}
         >
-          <Zoom zoom={1 / 4}>
-            {Next && (
-              <Slide>
-                <Next />
-              </Slide>
-            )}
-          </Zoom>
+          <Zoom zoom={1 / 4}>{next && <Slide>{next}</Slide>}</Zoom>
           <Pre>{notes}</Pre>
         </div>
       </div>

@@ -35,7 +35,7 @@ export const Overview = props => {
           marginRight: 'auto',
         }}
       >
-        {slides.map((Component, i) => (
+        {slides.map((slide, i) => (
           <div
             ref={i === index ? activeThumb : null}
             key={i}
@@ -55,9 +55,7 @@ export const Overview = props => {
             }}
           >
             <Zoom zoom={1 / 6}>
-              <Slide>
-                <Component />
-              </Slide>
+              <Slide>{slide}</Slide>
             </Zoom>
           </div>
         ))}

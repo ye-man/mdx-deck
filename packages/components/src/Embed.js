@@ -30,7 +30,7 @@ const Placeholder = ({ index }) => (
 
 const wrapper = props => {
   const { slides, theme, themes, ratio, zoom } = splitSlides(props)
-  const Content = slides[props.slide - 1] || Placeholder
+  const content = slides[props.slide - 1] || <Placeholder />
 
   return (
     <Provider theme={theme} themes={themes}>
@@ -47,7 +47,8 @@ const wrapper = props => {
             transform: `scale(${zoom})`,
           }}
         >
-          <Content index={props.slide - 1} />
+          {content}
+          {/* <Content index={props.slide - 1} /> */}
         </Slide>
       </Ratio>
     </Provider>
