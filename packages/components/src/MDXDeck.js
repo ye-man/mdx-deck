@@ -163,13 +163,15 @@ export const MDXDeck = props => {
         <Wrapper {...props} {...context}>
           <Swipeable onSwipedRight={previous} onSwipedLeft={next}>
             <Router basepath={basepath}>
-              <Slide path="/" index={0} context={context}>
-                {first}
-              </Slide>
+              <Route path="/" slide={first} index={0} context={context} />
               {slides.map((slide, i) => (
-                <Slide key={i} path={i + '/*'} index={i} context={context}>
-                  {slide}
-                </Slide>
+                <Route
+                  key={i}
+                  path={i + '/*'}
+                  index={i}
+                  context={context}
+                  slide={slide}
+                />
               ))}
               <Print path="print" {...props} />
             </Router>
@@ -179,6 +181,9 @@ export const MDXDeck = props => {
     </Provider>
   )
 }
+
+// wtf reach router
+const Route = props => <Slide {...props} children={props.slide} />
 
 MDXDeck.propTypes = {
   slides: PropTypes.array.isRequired,
