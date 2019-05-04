@@ -1,10 +1,4 @@
-import { Head, Image, Notes, Appear, Steps } from '@mdx-deck/components'
-
-export const themes = []
-
-<Head>
-  <title>MDX Deck Demo</title>
-</Head>
+import { Image, Notes, Appear, Steps } from '@mdx-deck/components'
 
 # Hello MDX Deck
 
@@ -22,10 +16,11 @@ export const Beep = props =>
   <Hello>
     {props.children}
   </Hello>
-
 ```
 
-## This is v2
+---
+
+## This is v3
 
 ---
 
@@ -33,8 +28,8 @@ export const Beep = props =>
 
 <ul>
   <Appear>
-    <li>Reach Router</li>
-    <li>Less opinionated styles</li>
+    <li>Gatsby</li>
+    <li>Aspect Ratios</li>
     <li>more stuff</li>
   </Appear>
 </ul>
@@ -88,21 +83,19 @@ const codeExample = require('./code-example')
 
 ---
 
-export default props =>
-  <div
-    style={{
-      width: '100vw',
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'tomato'
-    }}>
-    {props.children}
-  </div>
+<div style={{
+  width: '100vw',
+  height: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'tomato'
+}}>
 
 ## With a (tomato) layout
+
+</div>
 
 ---
 
