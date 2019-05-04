@@ -149,7 +149,7 @@ export const MDXDeck = props => {
     next,
   }
 
-  const [First] = slides
+  const [first] = slides
   const Wrapper = getWrapper(state.mode)
 
   return (
@@ -164,11 +164,11 @@ export const MDXDeck = props => {
           <Swipeable onSwipedRight={previous} onSwipedLeft={next}>
             <Router basepath={basepath}>
               <Slide path="/" index={0} context={context}>
-                <First path="/" />
+                {first}
               </Slide>
-              {slides.map((Component, i) => (
+              {slides.map((slide, i) => (
                 <Slide key={i} path={i + '/*'} index={i} context={context}>
-                  <Component path={i + '/*'} />
+                  {slide}
                 </Slide>
               ))}
               <Print path="print" {...props} />

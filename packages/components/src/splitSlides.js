@@ -7,16 +7,16 @@ export const splitSlides = props => {
   const slides = []
 
   arr.forEach((child, i) => {
-    if (child.props.mdxType === 'hr') splits.push(i)
+    if (child.props.mdxType === 'hr' || child.type === 'hr') splits.push(i)
   })
 
   let previousSplit = 0
   splits.forEach(i => {
     const children = [...arr.slice(previousSplit, i)]
-    slides.push(() => children)
+    slides.push(children)
     previousSplit = i + 1
   })
-  slides.push(() => [...arr.slice(previousSplit)])
+  slides.push([...arr.slice(previousSplit)])
 
   return {
     ...props,
@@ -26,4 +26,6 @@ export const splitSlides = props => {
   }
 }
 
-export default splitSlides
+const Split = props => <>{splitSlides(props)}</>
+
+export default Split

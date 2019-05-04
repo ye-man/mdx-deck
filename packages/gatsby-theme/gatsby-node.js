@@ -10,10 +10,12 @@ const debug = Debug('@mdx-deck/gatsby-theme')
 exports.onPreBootstrap = ({ store }, opts = {}) => {
   const { path: source = 'src/decks' } = opts
 
-  const isDir = fs.statSync(source).isDirectory()
-  const dirname = isDir ? source : path.dirname(source)
+  const stat = fs.statSync(source)
+  const dirname = stat.isDirectory() ? source : path.dirname(source)
   const { program } = store.getState()
-  const dir = path.join(program.directory, dirname)
+  const dir = path.isAbsolute(dirname)
+    ? dirname
+    : path.join(program.directory, dirname)
 
   debug(`Initializing ${dir} directory`)
   mkdirp.sync(dir)

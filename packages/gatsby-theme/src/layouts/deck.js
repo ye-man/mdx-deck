@@ -11,7 +11,7 @@ const components = {
 export default ({ Component, ...props }) => {
   return (
     <Root>
-      <Component {...props} components={components} />
+      <Component {...props} mdx={Component} components={components} />
     </Root>
   )
 }
