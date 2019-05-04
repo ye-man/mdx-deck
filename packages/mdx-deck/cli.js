@@ -62,8 +62,9 @@ const filename = file || cmd
 
 if (!filename) cli.showHelp(0)
 
-const dirname = path.dirname(filename)
 const userdir = process.cwd()
+
+console.log(path.resolve(filename))
 
 process.env.__DIRNAME__ = userdir
 process.env.__SRC__ = path.resolve(filename)
@@ -84,34 +85,40 @@ if (opts.outDir) {
   )
 }
 
-const run = args =>
+const run = (...args) =>
   execa('gatsby', args.filter(Boolean), {
     cwd: __dirname,
     stdio: 'inherit',
   })
 
-switch (cmd) {
-  case 'build':
-    log('building')
-    const build = run([
-      'build',
-      opts.basepath && '--prefix-paths',
-      opts.basepath,
-    ])
-    break
-  case 'eject':
-    require('./lib/eject')(opts)
-    break
-  case 'dev':
-  default:
-    log('starting dev server')
-    const dev = run([
-      'develop',
-      '--host',
-      opts.host,
-      '--port',
-      opts.port,
-      opts.open && '--open',
-    ])
-    break
+const start = async () => {
+  await run('clean')
+
+  switch (cmd) {
+    case 'build':
+      log('building')
+      const build = run(
+        'build',
+        opts.basepath && '--prefix-paths',
+        opts.basepath
+      )
+      break
+    case 'eject':
+      require('./lib/eject')(opts)
+      break
+    case 'dev':
+    default:
+      log('starting dev server')
+      const dev = run(
+        'develop',
+        '--host',
+        opts.host,
+        '--port',
+        opts.port,
+        opts.open && '--open'
+      )
+      break
+  }
 }
+
+start()

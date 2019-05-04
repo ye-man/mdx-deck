@@ -7,9 +7,10 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "./cli.js demo.mdx -p 8080",
-    "build": "./cli.js build demo.mdx",
-    "eject": "./cli.js eject demo.mdx",
+    "clean": "gatsby clean",
+    "start": "./cli.js ___demo.mdx -p 8080",
+    "build": "./cli.js build ___demo.mdx",
+    "eject": "./cli.js eject ___demo.mdx",
     "help": "./cli.js"
   },
   "keywords": [],

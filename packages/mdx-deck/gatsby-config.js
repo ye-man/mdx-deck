@@ -20,6 +20,9 @@ if (themes.length) {
 }
 
 const relative = path.relative(dirname, src) || '.'
+const filepath = path.join(dirname, src)
+console.log({ src, dirname })
+console.log('relative', relative)
 
 module.exports = {
   __experimentalThemes: [
@@ -39,7 +42,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: src,
+        path: filepath,
       },
     },
     {
