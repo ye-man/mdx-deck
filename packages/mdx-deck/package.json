@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "./cli.js demo.mdx -p 8080",
+    "start": "./cli.js demo",
     "build": "./cli.js build demo.mdx",
     "eject": "./cli.js eject demo.mdx",
     "help": "./cli.js"

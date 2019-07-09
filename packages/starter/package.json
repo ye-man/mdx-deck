@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "@mdx-deck/starter",
+  "version": "3.0.0-0",
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop"
+  },
+  "dependencies": {
+    "@mdx-deck/gatsby-theme": "^3.0.0-0",
+    "gatsby": "^2.13.11",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}

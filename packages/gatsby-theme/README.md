@@ -33,6 +33,7 @@ Prototype for MDX Deck v3
 - [x] Print styles
 - [x] default theme
 - [x] slide styles
+- [ ] apply styles from components mdx-components
 
 Fixes
 #103 (slide title)
