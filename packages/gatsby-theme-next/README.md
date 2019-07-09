@@ -34,30 +34,6 @@ Prototype for MDX Deck v3
 - [x] default theme
 - [x] slide styles
 
-CLI
-
-- [ ] mdx-deck CLI
-  - [ ] develop
-  - [ ] build
-  - [ ] eject
-  - [ ] single or multiple decks
-
-Other Packages
-
-- [ ] port default themes over
-- [ ] update layouts for theme-ui
-- [ ] update create-deck
-- [ ] shim for @mdx-deck/components
-- [ ] export PDF (general Gatsby usage?)
-
-Additional things for consideration
-
-- [ ] Aspect Ratio/scale mode
-- [ ] custom remark plugins
-- [ ] Slide/route transitions
-- [ ] Open issue for static slide rendering (mdxs)
-- [ ] Allow custom gatsby-config.js in CLI? (otherwise eject)
-
 Fixes
 #103 (slide title)
 #326 (layout components)
