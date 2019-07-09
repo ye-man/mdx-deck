@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 const path = require('path')
 const meow = require('meow')
-const findup = require('find-up')
-const open = require('react-dev-utils/openBrowser')
 const chalk = require('chalk')
+const execa = require('execa')
 const pkg = require('./package.json')
 
 const config = require('pkg-conf').sync('mdx-deck')
@@ -28,9 +27,6 @@ const cli = meow(
       -h --host     Dev server host
       -p --port     Dev server port
       --no-open     Prevent from opening in default browser
-      --webpack     Path to webpack config file
-      -d --out-dir  Output directory for exporting
-      --no-html     Disable static HTML rendering for build
 
 `,
   {
@@ -49,53 +45,64 @@ const cli = meow(
         alias: 'o',
         default: true,
       },
-      outDir: {
-        type: 'string',
-        alias: 'd',
-      },
-      webpack: {
-        type: 'string',
-      },
-      html: {
-        type: 'boolean',
-        default: true,
-      },
-      basepath: {
-        type: 'string',
-      },
     },
   }
 )
 
 const [cmd, file] = cli.input
-const doc = file || cmd
+const filename = file || cmd
 
-if (!doc) cli.showHelp(0)
+if (!filename) cli.showHelp(0)
+
+process.env.__DIRNAME__ = process.cwd()
+process.env.__SRC__ = path.resolve(filename)
 
 const opts = Object.assign(
   {
-    dirname: path.dirname(path.resolve(doc)),
-    globals: {
-      FILENAME: JSON.stringify(path.resolve(doc)),
-    },
     host: 'localhost',
     port: 8080,
-    outDir: 'dist',
   },
   config,
   cli.flags
 )
 
-opts.outDir = path.resolve(opts.outDir)
-if (opts.webpack) {
-  opts.webpack = require(path.resolve(opts.webpack))
-} else {
-  const webpackConfig = findup.sync('webpack.config.js', { cwd: opts.dirname })
-  if (webpackConfig) opts.webpack = require(webpackConfig)
+if (opts.outDir) {
+  console.log(
+    chalk.red('[mdx-deck] the --out-dir flag has been deprecated'),
+    chalk.gray('Decks are now built to the `public/` directory')
+  )
 }
 
-let dev
+const run = (...args) =>
+  execa('gatsby', args.filter(Boolean), {
+    cwd: __dirname,
+    stdio: 'inherit',
+  })
 
+switch (cmd) {
+  case 'build':
+    run('build')
+    break
+  case 'eject':
+    const eject = require('./eject')
+    eject().then(() => {
+      console.log('TODO eject')
+    })
+    break
+  case 'dev':
+  default:
+    run(
+      'develop',
+      '--host',
+      opts.host,
+      '--port',
+      opts.port,
+      opts.open && '--open'
+    )
+    break
+}
+
+/*
 switch (cmd) {
   case 'build':
     log('building')
@@ -127,3 +134,4 @@ switch (cmd) {
       })
     break
 }
+*/
