@@ -1,23 +1,27 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import React from 'react'
-import Flex from './Flex'
-import Box from './Box'
 
-const Horizontal = ({ children }) => {
+export const Horizontal = ({ children }) => {
   const kids = React.Children.toArray(children)
 
   return (
-    <Flex
-      css={{
+    <div
+      sx={{
+        display: 'flex',
         alignItems: 'center',
         height: '100%',
-      }}
-    >
+      }}>
       {kids.map(child => (
-        <Box key={child.key} width={1 / kids.length}>
+        <div
+          key={child.key}
+          sx={{
+            width: 100 / kids.length + '%',
+          }}>
           {child}
-        </Box>
+        </div>
       ))}
-    </Flex>
+    </div>
   )
 }
 

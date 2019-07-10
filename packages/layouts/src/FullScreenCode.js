@@ -1,15 +1,19 @@
-import React from 'react'
-import styled from '@emotion/styled'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 
-const FullCode = styled.div({
-  textAlign: 'left',
-  '& pre': {
-    // needed to override inline styles from syntax highlighting
-    margin: '0 !important',
-    width: '100vw',
-    height: '100vh',
-    overflow: 'auto',
-  },
-})
+export const FullScreenCode = props => (
+  <div
+    sx={{
+      textAlign: 'left',
+      pre: {
+        // needed to override inline styles from prism
+        margin: '0 !important',
+        width: '100vw',
+        height: '100vh',
+        overflow: 'auto',
+      },
+    }}
+  />
+)
 
-export default props => <FullCode {...props} />
+export default FullScreenCode
