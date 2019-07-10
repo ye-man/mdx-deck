@@ -1,31 +1,24 @@
+import theme from './base'
+
 const blue = '#0af'
 
 export default {
+  ...theme,
+  font: '"Bowlby One SC", sans-serif',
   googleFont: 'https://fonts.googleapis.com/css?family=Bowlby+One+SC',
-  fonts: {
-    body: '"Bowlby One SC", sans-serif',
-  },
-  fontWeights: {
-    heading: 600,
-    bold: 600,
-  },
   colors: {
     text: '#dff',
     background: '#011',
     blue,
-    primary: blue,
+    link: blue,
+    pre: blue,
+    preBackground: '#000',
+    code: blue,
   },
-  styles: {
-    pre: {
-      color: 'primary',
-      bg: 'black',
-    },
-    code: {
-      color: 'primary',
-      bg: 'black',
-    },
-    blockquote: {
-      fontWeight: 'bold',
-    },
+  heading: {
+    fontWeight: 600,
+  },
+  quote: {
+    fontWeight: 600,
   },
 }

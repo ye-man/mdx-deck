@@ -1,30 +1,18 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
 import React from 'react'
+import Flex from './Flex'
+import Box from './Box'
 
-export const Split = ({ children }) => {
+const Split = ({ children }) => {
   const [a, ...rest] = React.Children.toArray(children)
-
   return (
-    <div
-      sx={{
-        display: 'flex',
+    <Flex
+      css={{
         alignItems: 'center',
         height: '100%',
       }}>
-      <div
-        sx={{
-          width: '50%',
-        }}>
-        {a}
-      </div>
-      <div
-        sx={{
-          width: '50%',
-        }}>
-        {rest}
-      </div>
-    </div>
+      <Box width={1 / 2}>{a}</Box>
+      <Box width={1 / 2}>{rest}</Box>
+    </Flex>
   )
 }
 

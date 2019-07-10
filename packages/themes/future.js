@@ -1,33 +1,25 @@
+import theme from './base'
+
+const blue = '#0af'
+
 export default {
-  fonts: {
-    body: '"Avenir Next", system-ui, sans-serif',
-  },
-  fontWeights: {
-    heading: 600,
-    bold: 600,
-  },
+  ...theme,
+  font: '"Avenir Next", system-ui, sans-serif',
   colors: {
     text: '#fff',
     background: '#111',
-    primary: '#0af',
-    muted: '#000',
+    blue,
+    link: blue,
+    pre: blue,
+    preBackground: '#000',
+    code: blue,
   },
-  text: {
-    heading: {
-      textTransform: 'uppercase',
-      letterSpacing: '0.1em',
-    },
+  heading: {
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+    fontWeight: 600,
   },
-  styles: {
-    pre: {
-      color: 'primary',
-      bg: 'muted',
-    },
-    code: {
-      color: 'primary',
-    },
-    blockquote: {
-      fontWeight: 'bold',
-    },
+  quote: {
+    fontWeight: 600,
   },
 }

@@ -1,7 +1,5 @@
 # @mdx-deck/webpack-html-plugin
 
-**DEPRECATED**
-
 Webpack plugin for generating HTML
 
 ```sh

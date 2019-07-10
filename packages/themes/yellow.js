@@ -1,33 +1,31 @@
+import theme from './base'
+
 const yellow = '#fd0'
 
 export default {
+  ...theme,
+  font: '"Roboto Condensed", system-ui, sans-serif',
+  weights: [400, 700],
+  monospace: '"Roboto Mono", monospace',
   googleFont:
     'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto+Mono',
-  fonts: {
-    body: '"Roboto Condensed", system-ui, sans-serif',
-    monospace: '"Roboto Mono", monospace',
-  },
   colors: {
     text: '#000',
     background: yellow,
-    primary: '#333',
+    link: '#333',
+    pre: yellow,
+    preBackground: '#000',
+    code: yellow,
+    codeBackground: '#000',
   },
-  text: {
-    heading: {
-      textTransform: 'uppercase',
-    },
+  heading: {
+    textTransform: 'uppercase',
+    fontWeight: 700,
   },
-  styles: {
-    blockquote: {
-      fontWeight: 'bold',
-    },
-    code: {
-      color: 'background',
-      bg: 'text',
-    },
-    pre: {
-      color: 'background',
-      bg: 'text',
-    },
+  blockquote: {
+    fontWeight: 700,
+  },
+  pre: {
+    textAlign: 'left',
   },
 }

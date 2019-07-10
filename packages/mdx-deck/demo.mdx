@@ -1,5 +1,6 @@
-import { Head, Image, Notes, Appear } from '@mdx-deck/gatsby-theme'
-export { dark as theme } from './themes'
+import { Head, Image, Notes, Appear, Steps } from '@mdx-deck/components'
+
+export const themes = []
 
 <Head>
   <title>MDX Deck Demo</title>
@@ -12,15 +13,19 @@ export { dark as theme } from './themes'
 ```jsx
 import React from 'react'
 
+export default props =>
+  <div style={{ color: 'red' }}>
+    {props.children}
+  </div>
+
 export const Beep = props =>
   <Hello>
     {props.children}
   </Hello>
+
 ```
 
----
-
-## This is v3
+## This is v2
 
 ---
 
@@ -28,22 +33,18 @@ export const Beep = props =>
 
 <ul>
   <Appear>
-    <li>Built with Gatsby</li>
-    <li>Gatsby theme</li>
-    <li>Theme UI</li>
+    <li>Reach Router</li>
+    <li>Less opinionated styles</li>
+    <li>more stuff</li>
   </Appear>
 </ul>
 
 ---
 
-<img
-  src='https://source.unsplash.com/random/1024x768/?train'
+<Image
+  src='https://source.unsplash.com/random/1024x768'
   size='contain'
 />
-
-<Notes>
-  Choo! Choo!
-</Notes>
 
 ---
 
@@ -61,9 +62,7 @@ const codeExample = require('./code-example')
 
 ---
 
-## Appear Again
-
-(for debugging)
+## More Appear
 
 <Appear>
   <div>One</div>
@@ -76,46 +75,34 @@ const codeExample = require('./code-example')
 
 ---
 
-## Embed
+## Steps Components
 
-You can Embed an MDX Deck presentation anywhere in React
+<Steps
+  length={3}
+  render={({ step }) => (
+    <pre>
+      Step: {step}
+    </pre>
+  )}
+/>
 
 ---
-
-```jsx
-import React from 'react'
-import { Embed } from 'mdx-deck'
-import MyDeck from './my-deck.mdx'
 
 export default props =>
-  <Embed
-    src={MyDeck}
-    slide={4}
-  />
-```
-
----
-
-## New Layouts
-
-TK
-
----
-
-<div
-  style={{
-    width: '100vw',
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'tomato'
-  }}>
+  <div
+    style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'tomato'
+    }}>
+    {props.children}
+  </div>
 
 ## With a (tomato) layout
-
-</div>
 
 ---
 

@@ -1,22 +1,28 @@
+import base from './base'
+
 const white = '#fff'
 const black = '#000'
 const red = '#f00'
 
 export default {
-  fonts: {
-    body: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-  },
+  ...base,
+  font: '"Helvetica Neue", Helvetica, Arial, sans-serif',
   colors: {
     text: black,
     background: white,
-    primary: red,
+    link: red,
   },
-  styles: {
-    Slide: {
-      textAlign: 'left',
-      fontSize: ['1.5em', '3em'],
-      // minWidth: '80vw',
-      // minHeight: '60vh',
+  css: {
+    textAlign: 'left',
+    fontSize: '1.5em',
+    '@media screen and (min-width:64em)': {
+      fontSize: '3em',
+    },
+  },
+  Slide: {
+    '& > div': {
+      minWidth: '80vw',
+      minHeight: '60vh',
     },
   },
 }

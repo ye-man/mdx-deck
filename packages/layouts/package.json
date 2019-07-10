@@ -1,12 +1,12 @@
 {
   "name": "@mdx-deck/layouts",
-  "version": "3.0.0-0",
+  "version": "2.5.0",
   "main": "src/index.js",
   "author": "Brent Jackson <jxnblk@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.7",
-    "@mdx-js/react": "^1.0.23",
-    "theme-ui": "^0.2.10"
+    "@emotion/styled": "^10.0.7",
+    "styled-system": "^4.0.1"
   }
 }

@@ -2,7 +2,7 @@
 
 # MDX Deck <img src='docs/ace.png' width='24' height='24' />
 
-Award-winning React [MDX][]-based presentation decks
+Award-winning [MDX][]-based presentation decks
 
 [![Build Status][badge]][travis]
 [![Version][]][npm]
@@ -18,13 +18,12 @@ Award-winning React [MDX][]-based presentation decks
 npm i -D mdx-deck
 ```
 
-- 📝 Write presentations in markdown
-- ⚛️ Import and use [React components](#imports)
-- 💅 Customizable [themes](#theming) with [Theme UI][]
-- 0️⃣ Zero-config CLII
-- 🎨 Gatsby theme
-- 💁 [Presenter mode](#presenter-mode)
-- 📓 [Speaker notes](#speaker-notes)
+- :memo: Write presentations in markdown
+- :atom_symbol: Import and use [React components](#imports)
+- :nail_care: Customizable [themes](#theming) and components
+- :zero: Zero-config CLI
+- :tipping_hand_woman: [Presenter mode](#presenter-mode)
+- :notebook: [Speaker notes](#speaker-notes)
 
 [View demo](https://mdx-deck.jxnblk.com)
 
@@ -49,9 +48,7 @@ Create an [MDX][] file and separate each slide with `---`.
 
 import Demo from './components/Demo'
 
-<Demo />
-
----
+## <Demo />
 
 # The end
 ````
@@ -107,9 +104,15 @@ Read more about MDX syntax in the [MDX Docs][mdx].
 
 ## Theming
 
-MDX Deck uses [Theme UI][], making virtually any part of the presentation themeable.
+MDX Deck uses [emotion][] for styling, making practically any part of the presentation themeable.
 
 ### Built-in Themes
+
+<div>
+  <img src='docs/images/future.png' width='256' />
+  <img src='docs/images/comic.png' width='256' />
+  <img src='docs/images/yellow.png' width='256' />
+</div>
 
 MDX Deck includes several built-in themes to change the look and feel of the presentation.
 Export `theme` from your MDX file to enable a theme.
@@ -120,6 +123,7 @@ export { dark as theme } from 'mdx-deck/themes'
 # Dark Theme
 ```
 
+MDX uses [exports](https://github.com/mdx-js/mdx#exports) as a way for files to communicate with their parent components.
 For a list of available themes see the [Themes Docs](docs/themes.md).
 
 ### Custom Themes
@@ -127,25 +131,50 @@ For a list of available themes see the [Themes Docs](docs/themes.md).
 A custom theme can be provided by exporting `theme` from the MDX file.
 
 ```mdx
-import myTheme from './theme'
-
-export const theme = myTheme
+export { default as theme } from './theme'
 
 # Hello
 ```
 
-Read more about customizing in the [Theming Docs](docs/theming.md).
+The theme should be an object with fields for fonts, colors, and CSS for individual components.
 
-## Components
+```js
+// example theme.js
+export default {
+  // add a custom font
+  font: 'Roboto, sans-serif',
+  // custom colors
+  colors: {
+    text: '#f0f',
+    background: 'black',
+    link: '#0ff',
+  },
+}
+```
 
-MDX Deck includes built-in components to help with creating presentations,
-including a full screen Image component,
-the Appear component that allows stepping through parts of a single slide,
-and the Notes component for adding speaker notes.
+Read more about theming in the [Theming docs](docs/theming.md)
+
+### Components
+
+MDX Deck includes built-in components to help with creating presentations, including a full screen Image component, the Appear component that allows stepping through parts of a single slide, and the Notes component for adding speaker notes.
 
 Read more in the [components docs](docs/components.md).
 
-## Layouts
+### Libraries
+
+These third-party libraries are great for use with MDX Deck.
+
+- [CodeSurfer][]: React component for scrolling, zooming and highlighting code.
+- [mdx-code][]: Runnable code playgrounds for MDX Deck.
+- [mdx-deck-live-code][]: Live React and JS coding in slides.
+
+_Note: please check with version compatibility when using these libraries._
+
+[codesurfer]: https://github.com/pomber/code-surfer
+[mdx-code]: https://github.com/pranaygp/mdx-code
+[mdx-deck-live-code]: https://github.com/JReinhold/mdx-deck-live-code
+
+### Layouts
 
 Each slide can include a custom layout around its content.
 This can be used as a substitute for slide templates found in other presentation apps and libraries.
@@ -194,6 +223,14 @@ MDX Deck includes a built-in _Presenter Mode_, with a preview of the next slide 
 
 ![presenter mode screenshot](docs/images/presenter-mode.png)
 
+To use presenter mode:
+
+1. Open your presentation and press `Option + P` to enter _Presenter Mode_
+2. Click on the link in the bottom to open the presentation in another tab
+3. Move the other window to the screen for the audience to see
+4. Control the presentation from your window using the left and right arrow keys – the other window should stay in sync
+5. Be sure to move your cursor so that it doesn't drive anyone in the audience crazy
+
 ### Speaker Notes
 
 Notes that only show in presenter mode can be added to any slide.
@@ -207,25 +244,36 @@ import { Notes } from 'mdx-deck'
 <Notes>Only visible in presenter mode</Notes>
 ```
 
-## Gatsby
+## Overview Mode
 
-MDX Deck is built with [Gatsby][] and is also available as a Gatsby theme,
-which means you can customize any part of the interface with shadowing,
-use the entire ecosystem of Gatsby plugins,
-incorporate presentations into other Gatsby sites,
-and even extend MDX Deck to create your own custom version.
+![Overview Mode](docs/images/overview-mode.png)
+
+When editing a slide deck, toggle overview mode with `Option + O`.
+This shows a list of all slides on the left and a preview of the current slide on the right.
 
 ## Keyboard Shortcuts
 
 | Key         | Description                                  |
 | ----------- | -------------------------------------------- |
-| Left Arrow, Page Up, Shift+Space  | Go to previous slide (or step in [Appear][]) |
-| Right Arrow, Page Down, Space | Go to next slide (or step in [Appear][])     |
+| Left Arrow  | Go to previous slide (or step in [Appear][]) |
+| Right Arrow | Go to next slide (or step in [Appear][])     |
+| Space       | Go to next slide (or step in [Appear][])     |
 | Option + P  | Toggle [Presenter Mode](#presenter-mode)     |
 | Option + O  | Toggle [Overview Mode](#overview-mode)       |
-| Escape      | Exit to normal mode |
 
 [appear]: docs/components.md#appear
+
+## Exporting
+
+Add a `build` script to your `package.json` to export a presentation as HTML with a JS bundle.
+
+```json
+"scripts": {
+  "build": "mdx-deck build deck.mdx"
+}
+```
+
+See more exporting options in the [Exporting Documentation](docs/exporting.md)
 
 ## CLI Options
 
@@ -233,6 +281,9 @@ and even extend MDX Deck to create your own custom version.
 -p --port     Dev server port
 -h --host     Host the dev server listens to
 --no-open     Prevent from opening in default browser
+-d --out-dir  Output directory for exporting
+--webpack     Path to custom webpack config file
+--no-html     Disable static HTML rendering
 ```
 
 ## Docs
@@ -243,23 +294,7 @@ and even extend MDX Deck to create your own custom version.
 - [Components](docs/components.md)
 - [Exporting](docs/exporting.md)
 - [Advanced Usage](docs/advanced.md)
-- [Gatsby](docs/gatsby.md)
 - [API](docs/api.md)
-
-## Libraries
-
-These third-party libraries are great for use with MDX Deck.
-
-- [CodeSurfer][]: React component for scrolling, zooming and highlighting code.
-- [mdx-code][]: Runnable code playgrounds for MDX Deck.
-- [mdx-deck-live-code][]: Live React and JS coding in slides.
-
-_Note: please check with version compatibility when using these libraries._
-
-[codesurfer]: https://github.com/pomber/code-surfer
-[mdx-code]: https://github.com/pranaygp/mdx-code
-[mdx-deck-live-code]: https://github.com/JReinhold/mdx-deck-live-code
-
 
 ## Real Examples
 
@@ -271,13 +306,6 @@ See how others have used MDX Deck for their presentations.
 - [I Got 99 Problems but GraphQL Ain't One][99-problems] by [Sara Vieira](https://mobile.twitter.com/NikkitaFTW)
 - [Stop de #divFest][stop-div-fest] by [Sara Vieira](https://mobile.twitter.com/NikkitaFTW)
 - [MDX, authors and richer JAMstack content][mdx-talk] by [Josh Dzielak](https://mobile.twitter.com/dzello)
-
-[design-systems-react]: https://github-ds.now.sh/#0
-[brazil-now]: https://braziljs.now.sh
-[simplify-react]: https://simply-react.netlify.com/#0
-[99-problems]: https://99-problems-graphql-aint-one.now.sh/#0
-[stop-div-fest]: https://stop-div-fest.now.sh/
-[mdx-talk]: https://mdx-talk.developermode.com/
 
 ## Usage Examples
 
@@ -300,15 +328,20 @@ The following examples will open in CodeSandbox.
 ### Related
 
 - [MDX][]
-- [Gatsby][]
-- [Theme UI][]
 - [emotion][]
 - [Spectacle][]
 
 [MIT License](LICENSE.md)
 
 [mdx]: https://mdxjs.com/
-[gatsby]: https://gatsbyjs.org
-[theme ui]: https://theme-ui.com
 [spectacle]: https://github.com/FormidableLabs/spectacle
 [emotion]: https://emotion.sh
+
+<!-- examples -->
+
+[design-systems-react]: https://github-ds.now.sh/#0
+[brazil-now]: https://braziljs.now.sh
+[simplify-react]: https://simply-react.netlify.com/#0
+[99-problems]: https://99-problems-graphql-aint-one.now.sh/#0
+[stop-div-fest]: https://stop-div-fest.now.sh/
+[mdx-talk]: https://mdx-talk.developermode.com/
