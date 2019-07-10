@@ -52,6 +52,11 @@ const getIndex = () => {
   return index
 }
 
+const GoogleFont = ({ theme }) => {
+  if (!theme.googleFont) return false
+  return <link rel="stylesheet" href={theme.googleFont} />
+}
+
 export default ({
   slides = [],
   pageContext: { title, slug },
@@ -73,7 +78,8 @@ export default ({
 
   const head = slides.head.children
 
-  const legacyTheme =
+  // todo: dont convert by default?
+  const mergedTheme =
     !!theme || themes.length
       ? convertLegacyTheme(merge({}, theme, ...themes))
       : { theme: {} }
@@ -97,10 +103,11 @@ export default ({
     <>
       <Helmet>
         <title>{title}</title>
+        <GoogleFont theme={mergedTheme} />
         {head}
       </Helmet>
       <Context.Provider value={context}>
-        <ThemeProvider {...legacyTheme}>
+        <ThemeProvider {...mergedTheme}>
           <Global
             styles={{
               body: {

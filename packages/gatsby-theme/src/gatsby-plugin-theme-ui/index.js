@@ -8,7 +8,7 @@ export default {
   },
   fonts: {
     body: 'system-ui, sans-serif',
-    heading: 'system-ui, sans-serif',
+    heading: 'inherit',
     monospace: '"Roboto Mono", Menlo, monospace',
     ui: 'system-ui, sans-serif',
   },

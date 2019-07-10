@@ -4,6 +4,8 @@ import baseTheme from '@mdx-deck/themes/base'
 // TODO: update basetheme merge with official
 
 export default (legacyTheme = {}) => {
+  // TODO: detect legacy theme vs theme-ui
+  // OR don't convert by default?
   const {
     components,
     colors = {},
