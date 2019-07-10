@@ -1955,25 +1955,6 @@
     react-swipeable "^5.0.1"
     resize-observer-polyfill "^1.5.1"
 
-"@mdx-deck/gatsby-theme@*":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@mdx-deck/gatsby-theme/-/gatsby-theme-2.5.0.tgz#453edf9c294ae2ba3994d5ff1d619c1de8fa4ee3"
-  integrity sha512-0Ynz548KMPBejZ+ffPxL2XkFQT0hEE+WCM0Zfa1RHCefr341g7usp85GDHFC3Ns545UrGfRh2eZI3UHaQFgRQA==
-  dependencies:
-    "@mdx-deck/components" "^2.5.0"
-    "@mdx-deck/themes" "^2.5.0"
-    "@mdx-js/mdx" "^1.0.1"
-    "@mdx-js/react" "^1.0.1"
-    debug "^4.1.1"
-    gatsby-plugin-compile-es6-packages "^1.1.0"
-    gatsby-plugin-emotion "^4.0.6"
-    gatsby-plugin-mdx "^1.0.6"
-    gatsby-source-filesystem "^2.0.29"
-    lodash.get "^4.4.2"
-    mkdirp "^0.5.1"
-    remark-emoji "^2.0.2"
-    remark-unwrap-images "^1.0.0"
-
 "@mdx-js/mdx@^1.0.1", "@mdx-js/mdx@^1.0.21":
   version "1.0.23"
   resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-1.0.23.tgz#bf0fcd60ef971527b0817080edc4f0fe8adb5fcd"
@@ -6735,15 +6716,7 @@ gatsby-plugin-catch-links@^2.1.0:
     "@babel/runtime" "^7.0.0"
     escape-string-regexp "^1.0.5"
 
-gatsby-plugin-compile-es6-packages@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-compile-es6-packages/-/gatsby-plugin-compile-es6-packages-1.1.0.tgz#5045c3bbf408c6d639b317ebffd8e9128073c4f9"
-  integrity sha512-YjB9LDyUBcWfVVF8mN+t4OziYghys08nb2vpYgW+sqXO4giHRLWpANFmVUXW+H2c1g8fAwPlKYcwDXyqNunibw==
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    regex-escape "^3.4.8"
-
-gatsby-plugin-emotion@^4.0.6, gatsby-plugin-emotion@^4.1.0:
+gatsby-plugin-emotion@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-emotion/-/gatsby-plugin-emotion-4.1.0.tgz#475ec6eee3beab6be989d7e96c1d145ca3c9da7f"
   integrity sha512-6Wrw47MK7j2OLgdjUmJVgdMtykFT9PNan2UTAjIWqquNMJgWWa96iM5kS4DnExhlwfyb50vji/SaWjW8JrUI8w==
@@ -6751,7 +6724,7 @@ gatsby-plugin-emotion@^4.0.6, gatsby-plugin-emotion@^4.1.0:
     "@babel/runtime" "^7.0.0"
     "@emotion/babel-preset-css-prop" "^10.0.5"
 
-gatsby-plugin-mdx@^1.0.6, gatsby-plugin-mdx@^1.0.8:
+gatsby-plugin-mdx@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.0.8.tgz#ae86951e9c1de293bd3394de8f75793737e9b82f"
   integrity sha512-VIblvqiUcNPoPeBgS9Sjh/2PFdns3GprTYu4dXWphjPKwt8/bqR8S7GMw8/gCaITQk0YK8vRt7xOD1GSadRm9Q==
@@ -6817,7 +6790,7 @@ gatsby-react-router-scroll@^2.1.1:
     scroll-behavior "^0.9.9"
     warning "^3.0.0"
 
-gatsby-source-filesystem@^2.0.29, gatsby-source-filesystem@^2.1.2:
+gatsby-source-filesystem@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.1.2.tgz#b7ce69d4b819924d22f91339b419624cfb3c4f43"
   integrity sha512-mrlQ00Es+qjb2MCIEHAkv/F3yfR5IgI8z2q54tqpxu4amlUy3SQH5ThJDGD7Ya574ub9aKdHOr8virTssmTDgA==
@@ -12814,11 +12787,6 @@ regenerator-transform@^0.14.0:
   integrity sha512-rtOelq4Cawlbmq9xuMR5gdFmv7ku/sFoB7sRiywx7aq53bc52b4j6zvH7Te1Vt/X2YveDKnCGUbioieU7FEL3w==
   dependencies:
     private "^0.1.6"
-
-regex-escape@^3.4.8:
-  version "3.4.9"
-  resolved "https://registry.yarnpkg.com/regex-escape/-/regex-escape-3.4.9.tgz#407b413562e2373d56994ff213e693658ea4f8f7"
-  integrity sha512-Cv9rjwyQwVhn3L097ysanWsEElurmxDj6Cc4Ut23z7e6hzRbrNvF3Le7yAciMfuzyb0sZwSr0ZHunMNCIoy2/g==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"

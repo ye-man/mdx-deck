@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "./cli.js demo",
+    "start": "./cli.js demo.mdx",
     "build": "./cli.js build demo.mdx",
     "eject": "./cli.js eject demo.mdx",
     "help": "./cli.js"
