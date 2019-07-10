@@ -12,7 +12,6 @@ import Context from '../context'
 import Wrapper from './wrapper'
 import Slide from './slide'
 import { modes } from '../constants'
-import convertLegacyTheme from '../convert-legacy-theme'
 
 import Presenter from './presenter'
 import Overview from './overview'
@@ -57,10 +56,17 @@ const GoogleFont = ({ theme }) => {
   return <link rel="stylesheet" href={theme.googleFont} />
 }
 
+const mergeThemes = (...themes) =>
+  themes.reduce(
+    (acc, theme) =>
+      typeof theme === 'function' ? theme(acc) : merge(acc, theme),
+    {}
+  )
+
 export default ({
   slides = [],
   pageContext: { title, slug },
-  theme,
+  theme = {},
   themes = [],
   ...props
 }) => {
@@ -77,12 +83,7 @@ export default ({
   }
 
   const head = slides.head.children
-
-  // todo: dont convert by default?
-  const mergedTheme =
-    !!theme || themes.length
-      ? convertLegacyTheme(merge({}, theme, ...themes))
-      : { theme: {} }
+  const mergedTheme = mergeThemes(theme, ...themes)
 
   let Mode = ({ children }) => <React.Fragment children={children} />
   switch (context.mode) {
@@ -107,7 +108,7 @@ export default ({
         {head}
       </Helmet>
       <Context.Provider value={context}>
-        <ThemeProvider {...mergedTheme}>
+        <ThemeProvider theme={mergedTheme}>
           <Global
             styles={{
               body: {
