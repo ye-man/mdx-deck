@@ -24,10 +24,12 @@
   "repository": "github:jxnblk/mdx-deck",
   "dependencies": {
     "@mdx-deck/gatsby-theme": "^3.0.0-0",
+    "@mdx-deck/layouts": "^3.0.0-0",
+    "@mdx-deck/themes": "^3.0.0-0",
     "chalk": "^2.4.2",
     "execa": "^2.0.3",
     "find-up": "^4.1.0",
-    "gatsby": "^2.13.11",
+    "gatsby": "^2.13.12",
     "meow": "^5.0.0",
     "pkg-conf": "^3.0.0",
     "react": "^16.8.6",

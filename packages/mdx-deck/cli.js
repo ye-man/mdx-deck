@@ -54,8 +54,9 @@ const filename = file || cmd
 
 if (!filename) cli.showHelp(0)
 
-process.env.__DIRNAME__ = process.cwd()
-process.env.__SRC__ = path.resolve(filename)
+const userdir = process.cwd()
+process.env.__DIRNAME__ = userdir
+process.env.__SRC__ = path.relative(userdir, path.resolve(filename))
 
 const opts = Object.assign(
   {
@@ -101,37 +102,3 @@ switch (cmd) {
     )
     break
 }
-
-/*
-switch (cmd) {
-  case 'build':
-    log('building')
-    const build = require('./lib/build')
-    build(opts)
-      .then(res => {
-        log('done')
-        process.exit(0)
-      })
-      .catch(err => {
-        log.error(err)
-        process.exit(1)
-      })
-    break
-  case 'dev':
-  default:
-    log('starting dev server')
-    dev = require('./lib/dev')
-    dev(opts)
-      .then(server => {
-        const { address, port } = server.address()
-        const url = `http://localhost:${port}`
-        if (opts.open) open(url)
-        log('listening on', chalk.green(url))
-      })
-      .catch(err => {
-        log.error(err)
-        process.exit(1)
-      })
-    break
-}
-*/
