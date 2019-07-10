@@ -33,9 +33,16 @@ Prototype for MDX Deck v3
 - [x] Print styles
 - [x] default theme
 - [x] slide styles
-- [ ] apply styles from components mdx-components
+- [x] apply styles from components mdx-components
 
 Fixes
 #103 (slide title)
 #326 (layout components)
 #338 (add documentation)
+
+Breaking
+
+- notes in pre??
+- export default for layout
+- CLI: --basepath, --webpack
+
