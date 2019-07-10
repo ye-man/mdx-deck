@@ -56,7 +56,7 @@ if (!filename) cli.showHelp(0)
 
 const userdir = process.cwd()
 process.env.__DIRNAME__ = userdir
-process.env.__SRC__ = path.relative(userdir, path.resolve(filename))
+process.env.__SRC__ = path.resolve(filename) // path.relative(userdir, path.resolve(filename))
 
 const opts = Object.assign(
   {
@@ -74,11 +74,18 @@ if (opts.outDir) {
   )
 }
 
-const run = (...args) =>
-  execa('gatsby', args.filter(Boolean), {
+const cache = path.join(__dirname, '.cache')
+
+const run = async (...args) => {
+  await execa('gatsby', ['clean'], {
     cwd: __dirname,
     stdio: 'inherit',
   })
+  return execa('gatsby', args.filter(Boolean), {
+    cwd: __dirname,
+    stdio: 'inherit',
+  })
+}
 
 switch (cmd) {
   case 'build':
